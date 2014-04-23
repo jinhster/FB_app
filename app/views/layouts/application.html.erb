@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FBApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<div class="container">
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+				<a href="#" class="navbar-brand">FB_App</a>
+				<ul class="nav nav-tabs">
+					<li><%= link_to "All Statuses", statuses_path %></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+  <div class="container">
+	<%= yield %>
+  </div>
+
+</body>
+</html>
