@@ -1,11 +1,14 @@
 <div class="page-header">
 <h1>Statuses</h1>
 </div>
-<%= link_to "Post status", new_status_path, class:"btn" %>
+
+<% if user_signed_in? %>
+<%= link_to "Post status", new_status_path, class:"btn btn-default" %>
+<% end %>
 
 <% @statuses.each do |status| %>
   <div class="status">
-    <b>Name: </b><%= status.name %><br/>
+    <b><%= status.user.full_name %></b><br/>
     <b>Content: </b>
     <p><%= status.content %> </p>
     <div class="meta">

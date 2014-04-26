@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'profiles/see_stat'
+
+  devise_for :users, :controllers => {:registrations => "user/registrations"}
+  devise_scope :user do
+    get 'signup', to: 'devise/registrations#new', as: :signup
+    get 'login', to: 'devise/sessions#new', as: :login
+    get 'logout', to: 'devise/sessions#destroy', as: :logout
+  end
   resources :statuses
   root to: 'statuses#index'
+  get '/:id', to: 'profiles#see_stat'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -7,21 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-		<div class="navbar-header">
+	<div class="navbar-wrapper">
+		<div class="container">
+		<div class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
-				<p class="notice"><%= notice %></p>
-				<p class="alert"><%= alert %></p>
+				<div class="navbar-header">
 				<a href="#" class="navbar-brand">FB_App</a>
-				<ul class="nav nav-tabs">
+
+					<ul class="nav navbar-nav">
 					<li><%= link_to "All Statuses", statuses_path %></li>
+				<div class="nav navbar-nav navbar-right">
+				<li>
+					<% if user_signed_in? %>
+					<%= link_to current_user.first_name, edit_user_registration_path %></li>
+				<li><%= link_to "Log Out", logout_path %></li>
+				<% else %>
+					<li><%= link_to "Sign In", login_path %></li>
+					<li><%= link_to "Sign Up", signup_path %></li>
+					<% end %>
+				</div>
 				</ul>
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
+</div>
+
   <div class="container">
+  	<% flash.each do |f,m| %>
+  		<div class="alert <%= flashes f %>">
+  			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  			<%= m  %>
+  	<% end %>
 	<%= yield %>
   </div>
 
