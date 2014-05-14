@@ -1,15 +1,19 @@
 <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "well"}) do |f| %>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "well", :multipart => true}) do |f| %>
   <%= devise_error_messages! %>
 <fieldset>
+<div class="form-group">
   <%= f.input :first_name %>
   <%= f.input :last_name %>
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
   <%= f.input :profile_name %>
   <%= f.input :email %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
-
+</div>
   <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
 <% end %>
 <br/>
